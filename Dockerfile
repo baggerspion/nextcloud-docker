@@ -5,7 +5,7 @@ MAINTAINER Paul Adams <paul@baggerspion.net>
 ENV NC_VERSION 11.0.1
 
 # Add the testing repo
-RUN echo 'http://dl-cdn.alpinelinux.org/alpine/edge/testing' >> /etc/apk/repositories && cat /etc/apk/repositories
+RUN echo 'http://dl-cdn.alpinelinux.org/alpine/edge/testing' >> /etc/apk/repositories
 
 # Install Nextcloud
 RUN apk update && \
