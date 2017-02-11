@@ -13,7 +13,6 @@ RUN apk update && \
     apk add --no-cache \
     	apache2 \ 
     	apache2-utils \
-	autoconf \
     	curl \
     	php5-imagick \
     	php7-apache2 \
