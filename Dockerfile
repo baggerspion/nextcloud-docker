@@ -11,11 +11,10 @@ RUN echo 'http://dl-cdn.alpinelinux.org/alpine/edge/testing' >> /etc/apk/reposit
 RUN apk update && \
     apk upgrade && \
     apk add --no-cache \
-    	apache2 \ 
+    	apache2-proxy \ 
     	apache2-utils \
     	curl \
     	php5-imagick \
-    	php7-apache2 \
 	php7-apcu \
 	php7-bz2 \
 	php7-ctype \ 
@@ -23,6 +22,7 @@ RUN apk update && \
 	php7-dev \
 	php7-dom \
 	php7-exif \
+	php7-fpm \
     	php7-gd \
 	php7-iconv \
     	php7-intl \
@@ -48,14 +48,15 @@ RUN apk update && \
     curl -o nc.tar.bz2 -fSL -0 https://download.nextcloud.com/server/releases/nextcloud-$NC_VERSION.tar.bz2 && \
     tar -xjf nc.tar.bz2 && \
     mv nextcloud /var/www/localhost/htdocs && \
-    chown -R apache.www-data /var/www/localhost/htdocs/nextcloud && \
-
     rm -rf /var/cache/apk/* /tmp/*
 
 # Configure Apache
 RUN mkdir -p /run/apache2 && \
     sed -i 's/^#ServerName.*/ServerName nextcloud/' /etc/apache2/httpd.conf && \
-    sed -i 's/^#LoadModule rewrite_module/LoadModule rewrite_module/' /etc/apache2/httpd.conf
+    sed -i 's/^#LoadModule rewrite_module/LoadModule rewrite_module/' /etc/apache2/httpd.conf && \
+    sed -i 's/^LoadModule mpm_prefork_module/#LoadModule mpm_prefork_module/' /etc/apache2/httpd.conf && \
+    sed -i 's/^#LoadModule mpm_event_module/LoadModule mpm_event_module/' /etc/apache2/httpd.conf && \
+    echo 'LoadModule slotmem_shm_module modules/mod_slotmem_shm.so' > /etc/apache2/conf.d/slotmem_shm.conf
 
 COPY nextcloud.conf /etc/apache2/conf.d
 
@@ -70,4 +71,5 @@ RUN { \
   } >> /etc/php7/conf.d/00_opcache.ini
 
 # The fun starts here!
-ENTRYPOINT ["apachectl", "-D", "FOREGROUND"]
+COPY nextcloud-entrypoint.sh /
+ENTRYPOINT ["/nextcloud-entrypoint.sh"]
