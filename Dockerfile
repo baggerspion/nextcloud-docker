@@ -13,6 +13,7 @@ RUN apk update && \
     apk add --no-cache \
     	apache2-proxy \ 
     	apache2-utils \
+	apache2-ssl \
     	curl \
     	php5-imagick \
 	php7-apcu \
