@@ -14,7 +14,6 @@ RUN apk update && \
     	apache2-proxy \ 
     	apache2-utils \
     	curl \
-    	php5-imagick \
 	php7-apcu \
 	php7-bz2 \
 	php7-ctype \ 
@@ -24,6 +23,7 @@ RUN apk update && \
 	php7-exif \
 	php7-fpm \
     	php7-gd \
+	php7-gmagick \
 	php7-iconv \
     	php7-intl \
     	php7-json \
