@@ -48,7 +48,7 @@ RUN apk update && \
     curl -o nc.tar.bz2 -fSL -0 https://download.nextcloud.com/server/releases/nextcloud-$NC_VERSION.tar.bz2 && \
     tar -xjf nc.tar.bz2 && \
     mv nextcloud /var/www/localhost/htdocs && \
-    rm -rf /var/cache/apk/* /tmp/*
+    rm -rf /var/cache/apk/* /tmp/* nc.tar.bz2
 
 # Configure Apache
 RUN mkdir -p /run/apache2 && \
