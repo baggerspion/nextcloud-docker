@@ -11,7 +11,7 @@ The official Nextcloud Docker image can be found over [at he Docer Hub](https://
   - The base distribution should be released as stable
   - The image should be based upon packages of the base distribution and not built manually
   
-'''Note: this Dockerfile is currently unavailable on Docker Hub as the base image is not yet stable'''
+```Note: this Dockerfile is currently unavailable on Docker Hub as the base image is not yet stable```
 
 ## Related Projects
 - [Nextcloud](https://nextcloud.com)
