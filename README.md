@@ -1,2 +1,6 @@
-# nextcloud-docker
-Files for building a Docker container for Nextcloud
+# Improved Dockerfile for Nextcloud
+
+## Related Projects
+- [Nextcloud](https://nextcloud.com)
+- [Docker](https://www.docker.com)
+- [Alpine Linux](https://www.alpinelinux.org)
