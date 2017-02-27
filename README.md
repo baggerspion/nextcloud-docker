@@ -2,7 +2,7 @@
 
 ## Background
 
-The official Nextcloud Docker image can be found over [at he Docer Hub](https://hub.docker.com/_/nextcloud/). It is not the most popular Nextcloud image. [This is](https://hub.docker.com/r/wonderfall/nextcloud/). The primary complaint I have about the official image is its size: over 600mb! This project exists to provide an alternative image with a much smaller footprint.
+The official Nextcloud Docker image can be found over [at the Docker Hub](https://hub.docker.com/_/nextcloud/). It is not the most popular Nextcloud image. [This is](https://hub.docker.com/r/wonderfall/nextcloud/). The primary complaint I have about the official image is its size: over 600mb! This project exists to provide an alternative image with a much smaller footprint.
 
 ## Overall Aims Of This Project
 
