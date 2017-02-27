@@ -30,7 +30,6 @@ RUN apk update && \
 	php7-ldap \
     	php7-mbstring \
     	php7-mcrypt \
-	php7-memcached \
 	php7-mysqli \
 	php7-openssl \
 	php7-opcache \
