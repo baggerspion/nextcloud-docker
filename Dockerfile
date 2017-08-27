@@ -2,7 +2,7 @@ FROM alpine:edge
 MAINTAINER Paul Adams <paul@baggerspion.net>
 
 # Set the NC version
-ENV NC_VERSION 11.0.1
+ENV NC_VERSION 12.0.2
 
 # Add the testing repo
 RUN echo 'http://dl-cdn.alpinelinux.org/alpine/edge/testing' >> /etc/apk/repositories
