@@ -1,11 +1,8 @@
-FROM alpine:edge
+FROM alpine:3.9.3
 MAINTAINER Paul Adams <paul@baggerspion.net>
 
 # Set the NC version
-ENV NC_VERSION 12.0.2
-
-# Add the testing repo
-RUN echo 'http://dl-cdn.alpinelinux.org/alpine/edge/testing' >> /etc/apk/repositories
+ENV NC_VERSION 15.0.7
 
 # Install Nextcloud
 RUN apk update && \
@@ -44,7 +41,6 @@ RUN apk update && \
 	php7-xmlwriter \
     	php7-zip \
 	php7-zlib && \
-
     adduser -D -u 1000 -g 'www' www && \
     mkdir /www && \
     chown -R www:www /var/lib/nginx && \
@@ -54,7 +50,11 @@ RUN apk update && \
     mv nextcloud/* /www && \
     rm -rf nextcloud /var/cache/apk/* /tmp/* nc.tar.bz2
 
+# Deploy the nginx config
 COPY nginx.conf /etc/nginx/nginx.conf
+
+# Deploy the php/mysql config
+COPY mysql.ini /etc/php7/conf.d/mysql.ini
 RUN { \
     echo 'opcache.memory_consumption=128'; \
     echo 'opcache.interned_strings_buffer=8'; \
