@@ -50,7 +50,10 @@ RUN apk update && \
     mv nextcloud/* /www && \
     rm -rf nextcloud /var/cache/apk/* /tmp/* nc.tar.bz2
 
+# Deploy the nginx config
 COPY nginx.conf /etc/nginx/nginx.conf
+
+# Deploy the php/mysql config
 COPY mysql.ini /etc/php7/conf.d/mysql.ini
 RUN { \
     echo 'opcache.memory_consumption=128'; \
